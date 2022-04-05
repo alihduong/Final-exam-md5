@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header" style="text-align: center">
+      <h2 style="color: orange">List Book</h2>
+  </div>
+  <div class="card-body">
+    <div class="row">
+    <mat-toolbar class="col md-12">
+      <span class="col md-10">Có {{bookList.length}} Book</span>
+      <button mat-raised-button color="warn" (click)="onCreate()" >Add new book</button>
+    </mat-toolbar>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="STT">
+        <th mat-header-cell *matHeaderCellDef> STT </th>
+        <td mat-cell *matCellDef="let row"> {{bookList.indexOf(row) + 1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Book Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.title}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef> Author </th>
+        <td mat-cell *matCellDef="let row"> {{row.author}} </td>
+      </ng-container>
+
+
+    <ng-container matColumnDef="#">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="onEdit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onView(row)">
+          <mat-icon>remove_red_eye</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

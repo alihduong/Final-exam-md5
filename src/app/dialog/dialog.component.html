@@ -1,0 +1,25 @@
+<form [formGroup]="formBook" (ngSubmit)="onSubmit(actionType)" autocomplete="off">
+  <h1 mat-dialog-title>{{actionType}}</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Book Name:</mat-label>
+      <input matInput placeholder="Enter Name Book" formControlName="title" name="name">
+      <mat-error>Book Name not invalid</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Author:</mat-label>
+      <input matInput type="text" placeholder="Enter name Author" formControlName="author" name="price">
+      <mat-error>Author not invalid </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Description:</mat-label>
+      <textarea matInput placeholder="Description" formControlName="description"
+                name="description">
+        </textarea>
+    </mat-form-field>
+    <div mat-dialog-actions [align]="'end'" style="margin-right: 40px; padding-right: 30px">
+      <button mat-raised-button color="accent" mat-dialog-close>Exit</button>
+      <button type="submit" mat-raised-button color="warn" [disabled]="formBook.invalid">{{actionType == 'Add New Book'? 'Add Book': 'Update'}}</button>
+    </div>
+  </div>
+</form>

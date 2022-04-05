@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{data.type != 'view'? 'Xoá sách': 'Chi tiết sách'}}</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Book Name: <span>{{book.title}}</span></h3>
+  <h3>Author: <span>{{book.author}}</span></h3>
+  <h3>Description:</h3>
+  <p>{{book.description}}</p>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Exit</button>
+  <button *ngIf="data.type != 'view'" mat-raised-button color="warn" (click)="handleDel(book.id)">Delete</button>
+</mat-dialog-actions>
